@@ -20,14 +20,14 @@ public class App {
 	public static List<Order> ORDERS = new ArrayList<Order>();
 
 	public static void menu() {
-		System.out.println("------------------Danh sách chức năng----------------------------");
-		System.out.println("1. Thêm mới sản phẩm");
-		System.out.println("2. Hiển thị sản phẩm");
-		System.out.println("3. Sửa sản phẩm");
-		System.out.println("4. Xóa sản phẩm");
-		System.out.println("5. Mua hàng");
-		System.out.println("6. Hiện thị danh sách đơn hàng");
-		System.out.println("7. Thoát.");
+		System.out.println("------------------List of functions-----------------------");
+		System.out.println("1. Add Product");
+		System.out.println("2. View product");
+		System.out.println("3. Change product");
+		System.out.println("4. Delete product");
+		System.out.println("5. Buy product");
+		System.out.println("6. View shopping cart");
+		System.out.println("7. Exit.");
 	}
 
 	public static void main(String[] args) {
@@ -46,7 +46,7 @@ public class App {
 			menu();
 			Scanner inputs = new Scanner(System.in);
 			try {
-				System.out.print("Chọn chức năng: ");
+				System.out.print("Please pick a function: ");
 				function = inputs.nextInt();
 				ProductService productService = new ProductService();
 				OrderService orderService = new OrderService();
@@ -75,14 +75,14 @@ public class App {
 					break;
 				}
 			} catch (InputMismatchException ei) {
-				System.out.println("Bạn đã nhập sai giá trị, xin vui lòng nhập lại!");
+				System.out.println("Invalid input! Please try again");
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
 
 		} while (function != 7);
 
-		System.out.println("Cám ơn bạn đã sử dụng phần mềm!");
+		System.out.println("Good Bye!");
 
 	}
 }

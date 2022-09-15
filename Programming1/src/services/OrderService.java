@@ -12,22 +12,22 @@ public class OrderService {
 	public void order() {
 		
 		Scanner inputs = new Scanner(System.in);
-		System.out.println("-------------------Mua sản phẩm:----------------");
+		System.out.println("-------------------Order List----------------");
 		
 		
 		try {
-			System.out.print("Mã đặt hàng: ");
+			System.out.print("Order ID: ");
 			int id = inputs.nextInt();
 			
 			inputs.nextLine();
 			
-			System.out.println("Nhập tên khách hàng: ");
+			System.out.println("Customer Name: ");
 			String customerName = inputs.nextLine();
 			
-			System.out.println("Nhập số điện thoại: ");
+			System.out.println("Phone Number: ");
 			String phone = inputs.nextLine();
 						
-			System.out.println("Nhập số email: ");
+			System.out.println("Email: ");
 			String email = inputs.nextLine();
 			
 			Order order = new Order(id, customerName, phone, email);
@@ -37,14 +37,14 @@ public class OrderService {
 			while (true) {
 				inputs = new Scanner(System.in);
 				
-				System.out.println("Nhập mã sản phẩm: ");
+				System.out.println("Product ID: ");
 				productId = inputs.nextInt();
 				
 				if (productId.equals(-1)) {
 					break;
 				}
 				
-				System.out.println("Nhập số lượng: ");
+				System.out.println("Quanity: ");
 				int quantity = inputs.nextInt();
 				
 				Product product = null;
@@ -57,7 +57,7 @@ public class OrderService {
 				}
 				
 				if (product == null) {
-					System.out.println("Mã sản phẩm không tồn tại");
+					System.out.println("Product ID does not exist");
 				}
 				
 				OrderDetail orderDetail = new OrderDetail();
@@ -75,7 +75,7 @@ public class OrderService {
 			
 			
 		} catch (InputMismatchException ei) {
-			System.out.println("Bạn đã nhập sai giá trị, xin vui lòng nhập lại!");
+			System.out.println("Invalid value! Please check and try again");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -84,9 +84,9 @@ public class OrderService {
 	
 	
 	public void show() {
-		System.out.println("Danh sách đặt hàng");
-		String header = String.format("%s%15s%30s%30s", "Mã", "Tên khách hàng",
-				"Số điện thoại", "Email");
+		System.out.println("Order List");
+		String header = String.format("%s%15s%30s%30s", "ID", "CustomerName",
+				"Phone Number", "Email");
 		System.out.println(header);
 		ProductService productService = new ProductService();
 		
@@ -96,7 +96,7 @@ public class OrderService {
 			System.out.println(row);
 			
 			String orderDetailHeader = String.format("%30s%10s%30s%30s",
-					"STT", "Tên Sản Phẩm", "Giá", "Số Lượng");
+					"Listing ID", "Product Name", "Price", "Quantity");
 			System.out.println(orderDetailHeader);
 			
 			int i = 1;
