@@ -123,4 +123,40 @@ public class ProductService {
 		}
 		return product;
 	}
+	public void removeProduct() {
+		Scanner inputs = new Scanner(System.in);
+
+		try {
+			System.out.println("Product ID: ");
+			Integer id = inputs.nextInt();
+			Product product = null;
+
+			for (Product p : Main.PRODUCTS) {
+				if (p.getId().equals(id)) {
+					product = p;
+					break;
+				}
+			}
+
+			if (product == null) {
+				System.out.println("Invalid ID! Please check and try again");
+			}
+
+			System.out.println("Product Info");
+			String row = String.format("%d%15s%30d%15f%15s", product.getId(), product.getName(), product.getQuantity(),
+					product.getPrice(), product.getDescription());
+			System.out.println(row);
+			
+			for (int i = Main.PRODUCTS.size() - 1; i >= 0 ; i--) {
+				if (id.equals(Main.PRODUCTS.get(i).getId())) {
+					Main.PRODUCTS.remove(i);
+				}
+			}
+
+		} catch (InputMismatchException ei) {
+			System.out.println("Invalid Input! Please Check and try again");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
